@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>About Us | Buliigo Boarding & Day Primary School</title>
+    <meta name="description" content="Learn about Buliigo Boarding and Day Primary School - Our mission, vision, history, and commitment to excellence in education since 2008." />
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; background-color: #f0f7fa; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+        :root {
+            --primary-dark: #0a2e5c;
+            --primary-blue: #1a6bb0;
+            --primary-light: #4a9ae0;
+            --accent-yellow: #f5c842;
+            --accent-gold: #e6b422;
+            --light-bg: #e8f0fe;
+            --text-dark: #1a2a3a;
+            --shadow-color: rgba(10, 46, 92, 0.15);
+            --gradient-blue: linear-gradient(135deg, #0a2e5c, #1a6bb0, #4a9ae0);
+            --gradient-warm: linear-gradient(135deg, #f5c842, #e6b422);
+        }
+
+        .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.8s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .section-title { font-size: 2.6rem; font-weight: 700; color: var(--primary-dark); }
+        .section-title span { color: var(--primary-blue); }
+        .section-title .highlight { color: var(--accent-yellow); }
+        .divider-blue { height: 4px; width: 70px; background: var(--gradient-warm); margin: 1rem auto 1rem 0; border-radius: 4px; }
+        .divider-center { margin-left: auto; margin-right: auto; }
+        
+        .btn-primary-custom { background: var(--gradient-blue); color: white; font-weight: 600; padding: 0.8rem 2rem; border-radius: 50px; border: none; transition: all 0.3s; box-shadow: 0 4px 15px rgba(26, 107, 176, 0.3); }
+        .btn-primary-custom:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(26, 107, 176, 0.4); color: white; }
+        .btn-outline-primary-custom { border: 2px solid var(--primary-blue); background: transparent; color: var(--primary-blue); border-radius: 40px; padding: 0.4rem 1.4rem; font-weight: 600; transition: all 0.2s; }
+        .btn-outline-primary-custom:hover { background: var(--gradient-blue); color: white; border-color: var(--primary-blue); }
+        .btn-yellow { background: var(--gradient-warm); color: var(--primary-dark); font-weight: 700; padding: 0.8rem 2rem; border-radius: 50px; border: none; transition: all 0.3s; }
+        .btn-yellow:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(245, 200, 66, 0.4); color: var(--primary-dark); }
+
+        .navbar-custom { background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(4px); box-shadow: 0 2px 30px rgba(10, 46, 92, 0.08); padding: 0.5rem 0; }
+        .nav-link-custom { font-weight: 600; color: var(--primary-dark) !important; margin: 0 0.3rem; padding: 0.5rem 1rem !important; font-size: 0.95rem; border-radius: 40px; transition: all 0.2s; }
+        .nav-link-custom:hover, .nav-link-custom.active { color: var(--primary-blue) !important; background-color: var(--light-bg); transform: translateY(-2px); }
+
+        .hero-about { position: relative; background: linear-gradient(135deg, rgba(10, 46, 92, 0.85), rgba(26, 107, 176, 0.75)), url('images/back3.jpg'); background-size: cover; background-position: center 40%; min-height: 45vh; display: flex; align-items: center; color: white; }
+        .hero-title { font-size: 3.5rem; font-weight: 800; letter-spacing: -0.02em; }
+
+        .program-card { background: white; border-radius: 28px; overflow: hidden; box-shadow: 0 12px 30px var(--shadow-color); transition: all 0.35s ease; height: 100%; border: 1px solid rgba(26, 107, 176, 0.08); }
+        .program-card:hover { transform: translateY(-10px); box-shadow: 0 25px 40px -12px var(--shadow-color); }
+        .program-img { height: 260px; width: 100%; object-fit: cover; }
+        .program-body { padding: 1.8rem; }
+
+        .heritage-card { background: #ffffff; border-radius: 28px; padding: 2rem; box-shadow: 0 8px 28px var(--shadow-color); }
+        .care-section { background: linear-gradient(135deg, var(--light-bg), #ffffff); border-radius: 28px; padding: 2rem; border-left: 5px solid var(--accent-yellow); }
+
+        .footer-modern { background: var(--primary-dark); color: #dce8f5; padding: 3rem 0 1.5rem; margin-top: 3rem; }
+        .footer-modern h3 { font-size: 1.4rem; font-weight: 600; color: var(--accent-yellow); margin-bottom: 1.2rem; }
+        .footer-modern a { color: #b0cce0; text-decoration: none; transition: 0.2s; }
+        .footer-modern a:hover { color: var(--accent-yellow); padding-left: 4px; }
+        .footer-border { border-left: 2px solid rgba(255,255,255,0.15); padding-left: 1.8rem; }
+        .social-icon { background: rgba(255,255,255,0.1); display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; margin-right: 12px; transition: 0.2s; color: #dce8f5; }
+        .social-icon:hover { background: var(--accent-yellow); color: var(--primary-dark); transform: translateY(-3px); }
+        .copyright { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 2rem; padding-top: 1.5rem; font-size: 0.85rem; text-align: center; color: #8aadc5; }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.2rem; }
+            .section-title { font-size: 2rem; }
+            .footer-border { border-left: none; padding-left: 0; margin-top: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="images/badge.jpg" alt="Buliigo Crest" style="height: 55px; width: auto; margin-right: 12px;" onerror="this.src='https://placehold.co/55/0a2e5c/white?text=B'">
+                <span class="fw-bold fs-4" style="color:#0a2e5c;">BULIIGO<span style="color:#f5c842;"> PRIMARY</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom active" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="team.html">Our Team</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="activities.html">Activities</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="contact.html">Contact</a></li>
+                </ul>
+                <a href="contact.html" class="btn btn-outline-primary-custom ms-lg-3">Enquire Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero-about">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-8 text-white">
+                    <span class="badge bg-warning text-dark px-3 py-2 rounded-pill"><i class="bi bi-book-heart me-1"></i> Our Story</span>
+                    <h1 class="hero-title fw-bold mt-2">About <span style="color:#f5c842;">Buliigo</span> Primary School</h1>
+                    <p class="lead mt-3" style="max-width: 600px;">Excellence with Integrity — shaping future leaders since 2008.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main>
+        <div class="container py-5">
+            <div class="row g-5 align-items-start">
+                <div class="col-lg-5 fade-up">
+                    <div class="mb-5">
+                        <i class="bi bi-star-fill text-warning fs-1"></i>
+                        <h2 class="section-title mt-2" style="font-size: 2rem;">Our <span>Mission</span></h2>
+                        <div class="divider-blue"></div>
+                        <p class="mt-3" style="color: var(--text-dark); font-size: 1.05rem;">To provide quality education that nurtures the intellectual, social, and spiritual growth of every child, preparing them for a successful and responsible life.</p>
+                    </div>
+                    <div>
+                        <i class="bi bi-eye-fill text-warning fs-1"></i>
+                        <h2 class="section-title mt-2" style="font-size: 2rem;">Our <span>Vision</span></h2>
+                        <div class="divider-blue"></div>
+                        <p class="mt-3" style="color: var(--text-dark); font-size: 1.05rem;">To be a beacon of educational excellence in Iganga and Uganda, shaping future leaders who transform communities with integrity and compassion.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 offset-lg-1 fade-up">
+                    <div class="heritage-card">
+                        <h3 style="color: var(--primary-dark); font-weight: 700; margin-bottom: 1.5rem;"><i class="bi bi-question-circle-fill text-warning me-2"></i> Why Buliigo Primary?</h3>
+                        <ul class="list-unstyled" style="display: flex; flex-direction: column; gap: 1rem;">
+                            <li><i class="bi bi-check-circle-fill text-warning me-3"></i> <strong>Quality Education:</strong> Blending national curriculum with modern teaching methods</li>
+                            <li><i class="bi bi-people-fill text-warning me-3"></i> <strong>Dedicated Teachers:</strong> Highly trained, passionate educators</li>
+                            <li><i class="bi bi-trophy-fill text-warning me-3"></i> <strong>Character Development:</strong> Values, discipline, and leadership training</li>
+                            <li><i class="bi bi-building-check text-warning me-3"></i> <strong>Modern Facilities:</strong> Spacious classrooms, library, playgrounds, and boarding facilities</li>
+                            <li><i class="bi bi-globe2 text-warning me-3"></i> <strong>Holistic Growth:</strong> Sports, arts, and extracurricular activities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Signature Programs -->
+        <div class="container-fluid px-4 py-5" style="background: var(--light-bg);">
+            <div class="container">
+                <div class="text-center fade-up mb-5">
+                    <h2 class="section-title">Our <span>Signature Programs</span></h2>
+                    <div class="divider-blue divider-center"></div>
+                    <p class="lead text-muted mt-3">Inspiring young minds through academics, arts, and athletics</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4 fade-up">
+                        <div class="program-card">
+                            <img src="images/exam.jpg
+                            " class="program-img" alt="Academics" onerror="this.src='https://placehold.co/600x400/1a6bb0/white?text=Academics'">
+                            <div class="program-body">
+                                <i class="bi bi-book fs-2 text-primary mb-3 d-block"></i>
+                                <h4 style="font-weight: 700; color:var(--primary-dark);">Academics</h4>
+                                <p>STEM, languages, and humanities with modern teaching methods, small class sizes, and personalized tutoring for every child.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 fade-up">
+                        <div class="program-card">
+                            <img src="images/dance.jpg" class="program-img" alt="Creative Arts" onerror="this.src='https://placehold.co/600x400/f5c842/white?text=Creative+Arts'">
+                            <div class="program-body">
+                                <i class="bi bi-palette fs-2 text-primary mb-3 d-block"></i>
+                                <h4 style="font-weight: 700; color:var(--primary-dark);">Creative Arts</h4>
+                                <p>Music, drama, visual arts, and cultural festivals. Students showcase talent at school events and community gatherings.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 fade-up">
+                        <div class="program-card">
+                            <img src="images/sport.jpg" class="program-img" alt="Sports" onerror="this.src='https://placehold.co/600x400/0a2e5c/white?text=Sports'">
+                            <div class="program-body">
+                                <i class="bi bi-trophy fs-2 text-primary mb-3 d-block"></i>
+                                <h4 style="font-weight: 700; color:var(--primary-dark);">Sports & Leadership</h4>
+                                <p>Football, netball, athletics, and leadership camps. Building teamwork, resilience, and healthy lifestyles.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Heritage & Care -->
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 fade-up">
+                    <h2 class="section-title" style="font-size: 2.2rem;">Our <span>Heritage & Growth</span></h2>
+                    <div class="divider-blue"></div>
+                    <p class="mt-3" style="line-height: 1.7;">Buliigo Boarding and Day Primary School was founded in 2008 with a dream to bring quality education to Buliigo Village, Iganga. Starting with a small group of dedicated teachers and students, we have grown into a thriving school community of over 500 learners.</p>
+                    <p>We combine local values with global perspectives, ensuring every child receives a well-rounded education that prepares them for success in life.</p>
+                    <div class="mt-4 d-flex flex-wrap gap-2">
+                        <span class="badge bg-primary fs-6 px-4 py-2 rounded-pill">Primary School</span>
+                        <span class="badge" style="background: var(--accent-yellow); color: var(--primary-dark); font-size: 0.9rem; padding: 0.4rem 1rem; border-radius: 40px;">Boarding</span>
+                        <span class="badge" style="background: var(--primary-light); color: white; font-size: 0.9rem; padding: 0.4rem 1rem; border-radius: 40px;">Day School</span>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up">
+                    <div class="care-section">
+                        <h5 style="font-size: 1.8rem; font-weight: 700; color:var(--primary-dark);"><i class="bi bi-heart-fill text-danger me-2"></i> We Care for Every Child</h5>
+                        <div class="divider-blue" style="margin: 0.5rem 0 1rem 0;"></div>
+                        <p>Our dedicated counsellors, inclusive policy, and after-school support ensure each student's emotional and social well-being. Small class sizes, mentorship programs, and parent-teacher collaboration make Buliigo a second home.</p>
+                        <p><strong><i class="bi bi-check-lg text-success"></i> Nutritious meal programs & safe transport.</strong></p>
+                        <div class="mt-3">
+                            <i class="bi bi-emoji-smile fs-2 text-primary me-3"></i>
+                            <i class="bi bi-shield-check fs-2 text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accreditation -->
+        <div class="container-fluid px-4 py-4" style="background: var(--light-bg);">
+            <div class="container text-center fade-up">
+                <h2 class="section-title">Our <span>Affiliations</span></h2>
+                <div class="divider-blue divider-center"></div>
+                <div class="d-flex flex-wrap justify-content-center gap-4 mt-4">
+                    <img src="uneb.jpg" alt="UNEB" style="height: 80px;" onerror="this.style.display='none'">
+                    <img src="un.jpeg" alt="United Nations" style="height: 80px;" onerror="this.style.display='none'">
+                    <img src="flag.jpg" alt="Uganda Flag" style="height: 80px;" onerror="this.style.display='none'">
+                    <img src="world.jpg" alt="Global Education" style="height: 80px;" onerror="this.style.display='none'">
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="container py-4">
+            <div class="cta-section p-5 text-center text-white" style="background: var(--gradient-blue); border-radius: 32px; box-shadow: 0 15px 40px var(--shadow-color);">
+                <h3 class="fw-bold mb-3" style="font-size: 1.8rem;">Ready to enroll your child?</h3>
+                <p class="mb-4">Visit us for a campus tour or request an admission pack today.</p>
+                <a href="contact.html" class="btn btn-yellow btn-lg px-5">Enroll Now <i class="bi bi-send ms-2"></i></a>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer-modern">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-4">
+                    <h3><i class="bi bi-link-45deg me-2"></i> Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html">🏠 Home</a></li>
+                        <li class="mb-2"><a href="about.html">📖 About Us</a></li>
+                        <li class="mb-2"><a href="team.html">👥 Our Team</a></li>
+                        <li class="mb-2"><a href="activities.html">⚽ Activities</a></li>
+                        <li class="mb-2"><a href="contact.html">📞 Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 footer-border">
+                    <h3><i class="bi bi-geo-alt-fill me-2"></i> Contact Us</h3>
+                    <p><i class="bi bi-pin-map-fill me-2"></i> Plot 9, Kyesimira Road, Buliigo Village, Iganga Town</p>
+                    <p><i class="bi bi-telephone-fill me-2"></i> +256 702 787460</p>
+                    <p><i class="bi bi-whatsapp me-2"></i> +256 702 787460</p>
+                    <p><i class="bi bi-envelope-fill me-2"></i> info@buliigoprimary.ac.ug</p>
+                    <div class="mt-3">
+                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3><i class="bi bi-mortarboard-fill"></i> Buliigo @Glance</h3>
+                    <p>A premier boarding and day primary school in Iganga, offering quality education and character development since 2008.</p>
+                    <p><i class="bi bi-clock-history"></i> Mon-Fri: 7:30am - 5:00pm</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p class="mb-0">&copy; 2025 Buliigo Boarding and Day Primary School. All rights reserved. | Excellence with Integrity</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const fadeElements = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        fadeElements.forEach(el => observer.observe(el));
+
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', function() {
+                if (!this.dataset.fallback) {
+                    this.dataset.fallback = 'true';
+                    this.src = 'https://placehold.co/600x400/1a6bb0/white?text=Buliigo';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+kings-school/
+├── index.html
+├── about.html
+├── team.html
+├── activities.html
+├── contact.html
+├── css/
+│   └── (optional - for custom styles)
+├── js/
+│   └── (optional - for custom scripts)
+└── images/
+    ├── badge.png
+    ├── back1.jpg
+    ├── back2.jpg
+    ├── back3.jpg
+    ├── back4.jpg
+    ├── headteacher.jpg
+    ├── head.jpg
+    ├── kids.jpg
+    ├── scat.jpg
+    ├── girl1.jpg
+    ├── dance.webp
+    ├── flag.jpg
+    ├── fan.jpg
+    ├── fan2.jpg
+    ├── hands.jpeg
+    ├── world.jpg
+    ├── un.jpeg
+    ├── uneb.jpg
+    ├── teacher1.jpg
+    ├── teacher2.jpg
+    ├── teacher3.jpg
+    └── teacher4.jpg

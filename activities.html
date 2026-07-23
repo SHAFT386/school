@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>Activities | Buliigo Boarding & Day Primary School</title>
+    <meta name="description" content="Explore the diverse co-curricular activities at Buliigo Boarding and Day Primary School - Sports, Arts, Clubs, and Leadership programs." />
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; background-color: #f0f7fa; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+        :root {
+            --primary-dark: #0a2e5c;
+            --primary-blue: #1a6bb0;
+            --primary-light: #4a9ae0;
+            --accent-yellow: #f5c842;
+            --accent-gold: #e6b422;
+            --light-bg: #e8f0fe;
+            --text-dark: #1a2a3a;
+            --shadow-color: rgba(10, 46, 92, 0.15);
+            --gradient-blue: linear-gradient(135deg, #0a2e5c, #1a6bb0, #4a9ae0);
+            --gradient-warm: linear-gradient(135deg, #f5c842, #e6b422);
+        }
+
+        .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.8s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .section-title { font-size: 2.6rem; font-weight: 700; color: var(--primary-dark); }
+        .section-title span { color: var(--primary-blue); }
+        .section-title .highlight { color: var(--accent-yellow); }
+        .divider-blue { height: 4px; width: 70px; background: var(--gradient-warm); margin: 1rem auto 1rem 0; border-radius: 4px; }
+        .divider-center { margin-left: auto; margin-right: auto; }
+        
+        .btn-primary-custom { background: var(--gradient-blue); color: white; font-weight: 600; padding: 0.8rem 2rem; border-radius: 50px; border: none; transition: all 0.3s; }
+        .btn-primary-custom:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(26, 107, 176, 0.4); color: white; }
+        .btn-outline-primary-custom { border: 2px solid var(--primary-blue); background: transparent; color: var(--primary-blue); border-radius: 40px; padding: 0.4rem 1.4rem; font-weight: 600; transition: all 0.2s; }
+        .btn-outline-primary-custom:hover { background: var(--gradient-blue); color: white; border-color: var(--primary-blue); }
+        .btn-yellow { background: var(--gradient-warm); color: var(--primary-dark); font-weight: 700; padding: 0.8rem 2rem; border-radius: 50px; border: none; transition: all 0.3s; }
+        .btn-yellow:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(245, 200, 66, 0.4); color: var(--primary-dark); }
+
+        .navbar-custom { background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(4px); box-shadow: 0 2px 30px rgba(10, 46, 92, 0.08); padding: 0.5rem 0; }
+        .nav-link-custom { font-weight: 600; color: var(--primary-dark) !important; margin: 0 0.3rem; padding: 0.5rem 1rem !important; font-size: 0.95rem; border-radius: 40px; transition: all 0.2s; }
+        .nav-link-custom:hover, .nav-link-custom.active { color: var(--primary-blue) !important; background-color: var(--light-bg); transform: translateY(-2px); }
+
+        .hero-activities { position: relative; background: linear-gradient(135deg, rgba(10, 46, 92, 0.85), rgba(26, 107, 176, 0.75)), url('images/back3.jpg'); background-size: cover; background-position: center; min-height: 40vh; display: flex; align-items: center; color: white; }
+
+        .activity-card { background: white; border-radius: 28px; overflow: hidden; box-shadow: 0 12px 30px var(--shadow-color); transition: all 0.35s ease; height: 100%; border: 1px solid rgba(26, 107, 176, 0.08); }
+        .activity-card:hover { transform: translateY(-10px); box-shadow: 0 25px 40px -12px var(--shadow-color); }
+        .activity-img { width: 100%; height: 240px; object-fit: cover; transition: 0.5s; }
+        .activity-card:hover .activity-img { transform: scale(1.03); }
+        .activity-body { padding: 1.5rem; }
+        .activity-icon { font-size: 2rem; color: var(--accent-yellow); margin-bottom: 0.75rem; }
+        .activity-title { font-size: 1.4rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 0.5rem; }
+        .activity-badge { background: var(--light-bg); color: var(--primary-blue); padding: 0.25rem 1rem; border-radius: 40px; font-size: 0.75rem; font-weight: 600; display: inline-block; margin-bottom: 1rem; }
+
+        .club-card { background: white; border-radius: 20px; padding: 1.5rem; text-align: center; transition: 0.3s; height: 100%; border: 1px solid rgba(26, 107, 176, 0.08); }
+        .club-card:hover { background: var(--light-bg); transform: translateY(-5px); }
+
+        .event-item { background: white; border-radius: 20px; padding: 1rem; margin-bottom: 1rem; border-left: 4px solid var(--accent-yellow); transition: 0.2s; }
+        .event-item:hover { transform: translateX(5px); box-shadow: 0 4px 12px var(--shadow-color); }
+        .event-date { font-weight: 700; color: var(--accent-yellow); font-size: 0.85rem; }
+
+        .footer-modern { background: var(--primary-dark); color: #dce8f5; padding: 3rem 0 1.5rem; margin-top: 3rem; }
+        .footer-modern h3 { font-size: 1.4rem; font-weight: 600; color: var(--accent-yellow); margin-bottom: 1.2rem; }
+        .footer-modern a { color: #b0cce0; text-decoration: none; transition: 0.2s; }
+        .footer-modern a:hover { color: var(--accent-yellow); padding-left: 4px; }
+        .footer-border { border-left: 2px solid rgba(255,255,255,0.15); padding-left: 1.8rem; }
+        .social-icon { background: rgba(255,255,255,0.1); display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; margin-right: 12px; transition: 0.2s; color: #dce8f5; }
+        .social-icon:hover { background: var(--accent-yellow); color: var(--primary-dark); transform: translateY(-3px); }
+        .copyright { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 2rem; padding-top: 1.5rem; font-size: 0.85rem; text-align: center; color: #8aadc5; }
+
+        @media (max-width: 768px) {
+            .section-title { font-size: 2rem; }
+            .footer-border { border-left: none; padding-left: 0; margin-top: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="images/badge.jpg" alt="Buliigo Crest" style="height: 55px; width: auto; margin-right: 12px;" onerror="this.src='https://placehold.co/55/0a2e5c/white?text=B'">
+                <span class="fw-bold fs-4" style="color:#0a2e5c;">BULIIGO<span style="color:#f5c842;"> PRIMARY</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="team.html">Our Team</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom active" href="activities.html">Activities</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="contact.html">Contact</a></li>
+                </ul>
+                <a href="contact.html" class="btn btn-outline-primary-custom ms-lg-3">Enquire Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero-activities">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-8 text-white">
+                    <span class="badge bg-warning text-dark px-3 py-2 rounded-pill"><i class="bi bi-trophy-fill me-1"></i> Beyond Academics</span>
+                    <h1 class="display-4 fw-bold mt-2">Co-curricular <span style="color:#f5c842;">Activities</span></h1>
+                    <p class="lead mt-3">Building character, teamwork, and leadership through diverse programs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <!-- Main Activities -->
+        <div class="container py-5">
+            <div class="text-center fade-up mb-5">
+                <h2 class="section-title">Discover <span>Your Passion</span></h2>
+                <div class="divider-blue divider-center"></div>
+                <p class="text-muted mt-3">Every student finds their niche — from sports to arts, leadership to service</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4 fade-up">
+                    <div class="activity-card">
+                        <img src="images/scat.jpg" class="activity-img" alt="Scouting" onerror="this.src='https://placehold.co/600x400/1a6bb0/white?text=Scouting'">
+                        <div class="activity-body">
+                            <div class="activity-icon"><i class="bi bi-binoculars-fill"></i></div>
+                            <div class="activity-badge">SCOUTING PROGRAM</div>
+                            <h3 class="activity-title">Leadership & Service</h3>
+                            <p>Scouting at Buliigo builds resilience, teamwork, and community service. Students engage in outdoor adventures and moral development programs.</p>
+                            <ul class="mt-2 small text-muted">
+                                <li>✓ Weekly scout meetings</li>
+                                <li>✓ Annual camping expeditions</li>
+                                <li>✓ Community service projects</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-up">
+                    <div class="activity-card">
+                        <img src="images/leader.jpg" class="activity-img" alt="Leadership" onerror="this.src='https://placehold.co/600x400/1a6bb0/white?text=Leadership'">
+                        <div class="activity-body">
+                            <div class="activity-icon"><i class="bi bi-star-fill"></i></div>
+                            <div class="activity-badge">PREFECTORIAL BOARD</div>
+                            <h3 class="activity-title">Student Leadership</h3>
+                            <p>Our prefects embody responsibility and integrity. They mentor peers, organize school events, and shape positive school culture.</p>
+                            <ul class="mt-2 small text-muted">
+                                <li>✓ Leadership training workshops</li>
+                                <li>✓ Peer mentoring programs</li>
+                                <li>✓ School event organization</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-up">
+                    <div class="activity-card">
+                        <img src="images/dance.jpg" class="activity-img" alt="Performing Arts" onerror="this.src='https://placehold.co/600x400/1a6bb0/white?text=Performing+Arts'">
+                        <div class="activity-body">
+                            <div class="activity-icon"><i class="bi bi-music-note-beamed"></i></div>
+                            <div class="activity-badge">PERFORMING ARTS</div>
+                            <h3 class="activity-title">Music, Dance & Drama</h3>
+                            <p>Music, dance, and drama are integral to Uganda's vibrant culture! From traditional songs to contemporary performances, our students shine.</p>
+                            <ul class="mt-2 small text-muted">
+                                <li>✓ Annual school gala</li>
+                                <li>✓ Music festivals participation</li>
+                                <li>✓ Traditional dance ensembles</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sports Section -->
+        <div class="container-fluid px-4 py-5" style="background: var(--light-bg);">
+            <div class="container">
+                <div class="text-center fade-up mb-5">
+                    <h2 class="section-title">Sports & <span>Athletics</span></h2>
+                    <div class="divider-blue divider-center"></div>
+                    <p class="text-muted mt-3">Developing teamwork, discipline, and physical fitness</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-3 col-sm-6 fade-up">
+                        <div class="club-card">
+                            <i class="bi bi-soccer fs-1 text-warning"></i>
+                            <h5 class="mt-2 fw-bold">Football</h5>
+                            <p class="small">Boys & Girls teams competing at district level</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 fade-up">
+                        <div class="club-card">
+                            <i class="bi bi-basketball fs-1 text-warning"></i>
+                            <h5 class="mt-2 fw-bold">Netball</h5>
+                            <p class="small">Girls' netball team with regular matches</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 fade-up">
+                        <div class="club-card">
+                            <i class="bi bi-ev-station fs-1 text-warning"></i>
+                            <h5 class="mt-2 fw-bold">Athletics</h5>
+                            <p class="small">Track & field events, annual sports day</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 fade-up">
+                        <div class="club-card">
+                            <i class="bi bi-people fs-1 text-warning"></i>
+                            <h5 class="mt-2 fw-bold">Volleyball</h5>
+                            <p class="small">Indoor & outdoor volleyball programs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clubs & Societies -->
+        <div class="container py-5">
+            <div class="text-center fade-up mb-5">
+                <h2 class="section-title">Clubs & <span>Societies</span></h2>
+                <div class="divider-blue divider-center"></div>
+                <p class="text-muted mt-3">Explore interests beyond the classroom</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4 fade-up">
+                    <div class="club-card text-start">
+                        <i class="bi bi-cpu fs-2 text-warning mb-2"></i>
+                        <h5 class="fw-bold">STEM Club</h5>
+                        <p class="small">Science experiments, coding, and innovation challenges.</p>
+                        <span class="badge bg-primary-light" style="background: var(--light-bg); color: var(--primary-dark); padding:0.25rem 0.75rem; border-radius:40px;">Wednesdays</span>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-up">
+                    <div class="club-card text-start">
+                        <i class="bi bi-book-half fs-2 text-warning mb-2"></i>
+                        <h5 class="fw-bold">Debate & Public Speaking</h5>
+                        <p class="small">Debate competitions, elocution contests, and confidence building.</p>
+                        <span class="badge bg-primary-light" style="background: var(--light-bg); color: var(--primary-dark); padding:0.25rem 0.75rem; border-radius:40px;">Thursdays</span>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-up">
+                    <div class="club-card text-start">
+                        <i class="bi bi-tree-fill fs-2 text-warning mb-2"></i>
+                        <h5 class="fw-bold">Environment Club</h5>
+                        <p class="small">Tree planting, recycling, and conservation awareness.</p>
+                        <span class="badge bg-primary-light" style="background: var(--light-bg); color: var(--primary-dark); padding:0.25rem 0.75rem; border-radius:40px;">Fridays</span>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-up">
+                    <div class="club-card text-start">
+                        <i class="bi bi-brush fs-2 text-warning mb-2"></i>
+                        <h5 class="fw-bold">Art Club</h5>
+                        <p class="small">Drawing, painting, sculpture, and annual art exhibitions.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-up">
+                    <div class="club-card text-start">
+                        <i class="bi bi-chat-dots fs-2 text-warning mb-2"></i>
+                        <h5 class="fw-bold">Journalism Club</h5>
+                        <p class="small">School magazine production, photography, and media skills.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-up">
+                    <div class="club-card text-start">
+                        <i class="bi bi-heart fs-2 text-warning mb-2"></i>
+                        <h5 class="fw-bold">Charity Club</h5>
+                        <p class="small">Community outreach, fundraising, and volunteering initiatives.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upcoming Events -->
+        <div class="container-fluid px-4 py-5" style="background: var(--gradient-blue);">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 text-white fade-up">
+                        <h2 class="text-white" style="font-size: 2rem;">Upcoming <span style="color:#f5c842;">Events</span></h2>
+                        <div class="divider-blue" style="background: var(--accent-yellow);"></div>
+                        <p>Join us in celebrating student achievements and school traditions.</p>
+                    </div>
+                    <div class="col-lg-6 fade-up">
+                        <div class="event-item">
+                            <div class="event-date"><i class="bi bi-calendar-event me-1"></i> March 20, 2026</div>
+                            <h5 class="fw-bold">Annual Sports Gala</h5>
+                            <p class="mb-0 small">Inter-house competitions, parents invited.</p>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date"><i class="bi bi-calendar-event me-1"></i> April 10-14, 2026</div>
+                            <h5 class="fw-bold">Music & Drama Festival</h5>
+                            <p class="mb-0 small">Regional qualifiers for national festivals.</p>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date"><i class="bi bi-calendar-event me-1"></i> May 25, 2026</div>
+                            <h5 class="fw-bold">Science Exhibition</h5>
+                            <p class="mb-0 small">Student projects open to the community.</p>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date"><i class="bi bi-calendar-event me-1"></i> June 15, 2026</div>
+                            <h5 class="fw-bold">Prize Giving Day</h5>
+                            <p class="mb-0 small">Celebrating student achievements with parents.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer-modern">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-4">
+                    <h3><i class="bi bi-link-45deg me-2"></i> Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html">🏠 Home</a></li>
+                        <li class="mb-2"><a href="about.html">📖 About Us</a></li>
+                        <li class="mb-2"><a href="team.html">👥 Our Team</a></li>
+                        <li class="mb-2"><a href="activities.html">⚽ Activities</a></li>
+                        <li class="mb-2"><a href="contact.html">📞 Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 footer-border">
+                    <h3><i class="bi bi-geo-alt-fill me-2"></i> Contact Us</h3>
+                    <p><i class="bi bi-pin-map-fill me-2"></i> Plot 9, Kyesimira Road, Buliigo Village, Iganga Town</p>
+                    <p><i class="bi bi-telephone-fill me-2"></i> +256 702 787460</p>
+                    <p><i class="bi bi-whatsapp me-2"></i> +256 702 787460</p>
+                    <p><i class="bi bi-envelope-fill me-2"></i> info@buliigoprimary.ac.ug</p>
+                    <div class="mt-3">
+                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3><i class="bi bi-mortarboard-fill"></i> Buliigo @Glance</h3>
+                    <p>A premier boarding and day primary school in Iganga, offering quality education and character development since 2008.</p>
+                    <p><i class="bi bi-clock-history"></i> Mon-Fri: 7:30am - 5:00pm</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p class="mb-0">&copy; 2025 Buliigo Boarding and Day Primary School. All rights reserved. | Excellence with Integrity</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const fadeElements = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        fadeElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
