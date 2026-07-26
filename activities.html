@@ -64,6 +64,17 @@
         .event-item:hover { transform: translateX(5px); box-shadow: 0 4px 12px var(--shadow-color); }
         .event-date { font-weight: 700; color: var(--accent-yellow); font-size: 0.85rem; }
 
+        /* ===== VIDEO GALLERY (responsive grid) ===== */
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; }
+        .video-card { background: white; border-radius: 22px; overflow: hidden; box-shadow: 0 12px 30px var(--shadow-color); border: 1px solid rgba(26, 107, 176, 0.08); transition: all 0.35s ease; }
+        .video-card:hover { transform: translateY(-8px); box-shadow: 0 22px 35px -12px var(--shadow-color); }
+        .video-wrapper { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #0a2e5c; }
+        .video-wrapper iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .video-caption { padding: 1.1rem 1.3rem; }
+        @media (max-width: 480px) {
+            .video-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+        }
+
         .footer-modern { background: var(--primary-dark); color: #dce8f5; padding: 3rem 0 1.5rem; margin-top: 3rem; }
         .footer-modern h3 { font-size: 1.4rem; font-weight: 600; color: var(--accent-yellow); margin-bottom: 1.2rem; }
         .footer-modern a { color: #b0cce0; text-decoration: none; transition: 0.2s; }
@@ -86,7 +97,7 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.html">
                 <img src="images/badge.jpg" alt="Buliigo Crest" style="height: 55px; width: auto; margin-right: 12px;" onerror="this.src='https://placehold.co/55/0a2e5c/white?text=B'">
-                <span class="fw-bold fs-4" style="color:#0a2e5c;">BULIIGO<span style="color:#f5c842;"> PRIMARY</span></span>
+                <span class="fw-bold fs-4" style="color:#0a2e5c;">BULIIGO<span style="color:#f5c842;"> BOARDING</span></span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
                 <span class="navbar-toggler-icon"></span>
@@ -308,6 +319,121 @@
                 </div>
             </div>
         </div>
+        <!-- School Calendar & Public Holidays -->
+        <div class="container py-5">
+            <div class="text-center fade-up mb-5">
+                <h2 class="section-title">2026 School <span>Calendar</span></h2>
+                <div class="divider-blue divider-center"></div>
+                <p class="text-muted mt-3">Public holidays observed during the school year, from our official school calendar</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4 col-sm-6 fade-up">
+                    <div class="club-card text-start">
+                        <h5 class="fw-bold" style="color: var(--primary-dark);"><i class="bi bi-calendar3 text-warning me-2"></i>January</h5>
+                        <p class="small mb-1">1 — New Year's Day</p>
+                        <p class="small mb-0">26 — Liberation Day</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 fade-up">
+                    <div class="club-card text-start">
+                        <h5 class="fw-bold" style="color: var(--primary-dark);"><i class="bi bi-calendar3 text-warning me-2"></i>February</h5>
+                        <p class="small mb-1">16 — Archbishop Janan Luwum Day</p>
+                        <p class="small mb-0">18 — Ash Wednesday</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 fade-up">
+                    <div class="club-card text-start">
+                        <h5 class="fw-bold" style="color: var(--primary-dark);"><i class="bi bi-calendar3 text-warning me-2"></i>March</h5>
+                        <p class="small mb-0">20 — Eid al-Fitr</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 fade-up">
+                    <div class="club-card text-start">
+                        <h5 class="fw-bold" style="color: var(--primary-dark);"><i class="bi bi-calendar3 text-warning me-2"></i>April</h5>
+                        <p class="small mb-1">3 — Good Friday</p>
+                        <p class="small mb-1">5 — Easter Sunday</p>
+                        <p class="small mb-0">6 — Easter Monday</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 fade-up">
+                    <div class="club-card text-start">
+                        <h5 class="fw-bold" style="color: var(--primary-dark);"><i class="bi bi-calendar3 text-warning me-2"></i>May</h5>
+                        <p class="small mb-1">1 — Labour Day</p>
+                        <p class="small mb-0">27 — Eid al-Adha</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 fade-up">
+                    <div class="club-card text-start">
+                        <h5 class="fw-bold" style="color: var(--primary-dark);"><i class="bi bi-calendar3 text-warning me-2"></i>June</h5>
+                        <p class="small mb-1">3 — Martyrs' Day</p>
+                        <p class="small mb-0">9 — National Heroes' Day</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 fade-up">
+                    <div class="club-card text-start">
+                        <h5 class="fw-bold" style="color: var(--primary-dark);"><i class="bi bi-calendar3 text-warning me-2"></i>October</h5>
+                        <p class="small mb-0">9 — Independence Day</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 fade-up">
+                    <div class="club-card text-start">
+                        <h5 class="fw-bold" style="color: var(--primary-dark);"><i class="bi bi-calendar3 text-warning me-2"></i>December</h5>
+                        <p class="small mb-1">25 — Christmas Day</p>
+                        <p class="small mb-0">26 — Boxing Day</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Gallery -->
+        <div class="container-fluid px-4 py-5" style="background: var(--light-bg);">
+            <div class="container">
+                <div class="text-center fade-up mb-5">
+                    <h2 class="section-title">Video <span>Gallery</span></h2>
+                    <div class="divider-blue divider-center"></div>
+                    <p class="text-muted mt-3">Watch highlights from school life at Buliigo Primary</p>
+                </div>
+                <div class="video-grid">
+                    <div class="video-card fade-up">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/REPLACE_WITH_TOUR_VIDEO_ID" title="Buliigo Primary School Tour" loading="lazy" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-caption">
+                            <h5 class="fw-bold mb-1">Campus Tour</h5>
+                            <p class="small text-muted mb-0">A walk through our classrooms, playgrounds, and boarding facilities.</p>
+                        </div>
+                    </div>
+                    <div class="video-card fade-up">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/REPLACE_WITH_SPORTS_VIDEO_ID" title="Sports Day Highlights" loading="lazy" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-caption">
+                            <h5 class="fw-bold mb-1">Sports Day Highlights</h5>
+                            <p class="small text-muted mb-0">Football, netball, and athletics from our annual sports gala.</p>
+                        </div>
+                    </div>
+                    <div class="video-card fade-up">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/REPLACE_WITH_MUSIC_VIDEO_ID" title="Music and Drama Festival" loading="lazy" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-caption">
+                            <h5 class="fw-bold mb-1">Music & Drama Festival</h5>
+                            <p class="small text-muted mb-0">Students perform traditional song, dance, and drama.</p>
+                        </div>
+                    </div>
+                    <div class="video-card fade-up">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/REPLACE_WITH_DAILY_LIFE_VIDEO_ID" title="A Day in the Life at Buliigo Primary" loading="lazy" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-caption">
+                            <h5 class="fw-bold mb-1">A Day in the Life</h5>
+                            <p class="small text-muted mb-0">Follow a pupil through a typical school day at Buliigo.</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center text-muted small mt-4"><i class="bi bi-info-circle me-1"></i> Placeholder videos shown — replace the <code>iframe src</code> links above with the school's real YouTube video IDs.</p>
+            </div>
+        </div>
     </main>
 
     <!-- ===== FOOTER ===== -->
@@ -326,10 +452,11 @@
                 </div>
                 <div class="col-md-4 footer-border">
                     <h3><i class="bi bi-geo-alt-fill me-2"></i> Contact Us</h3>
-                    <p><i class="bi bi-pin-map-fill me-2"></i> Plot 9, Kyesimira Road, Buliigo Village, Iganga Town</p>
-                    <p><i class="bi bi-telephone-fill me-2"></i> +256 702 787460</p>
-                    <p><i class="bi bi-whatsapp me-2"></i> +256 702 787460</p>
-                    <p><i class="bi bi-envelope-fill me-2"></i> info@buliigoprimary.ac.ug</p>
+                    <p><i class="bi bi-pin-map-fill me-2"></i> Plot 9, Kyesimira Road, Buliigo North Village, Iganga Municipality</p>
+                    <p><i class="bi bi-mailbox me-2"></i> P.O. Box 92, Iganga</p>
+                    <p><i class="bi bi-telephone-fill me-2"></i> +256 763 109091</p>
+                    <p><i class="bi bi-whatsapp me-2"></i> +256 763 109091</p>
+                    <p><i class="bi bi-envelope-fill me-2"></i> buliigobrdps@gmail.com</p>
                     <div class="mt-3">
                         <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
                         <a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a>
@@ -343,7 +470,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p class="mb-0">&copy; 2025 Buliigo Boarding and Day Primary School. All rights reserved. | Excellence with Integrity</p>
+                <p class="mb-0">&copy; 2025 Buliigo Boarding and Day Primary School. All rights reserved. | Appreciation Builds Interest</p>
             </div>
         </div>
     </footer>
