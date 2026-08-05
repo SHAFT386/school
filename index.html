@@ -57,12 +57,126 @@
         .nav-link-custom:hover, .nav-link-custom.active { color: var(--primary-blue) !important; background-color: var(--light-bg); transform: translateY(-2px); }
         .nav-link-custom.active { color: var(--primary-blue) !important; background-color: var(--light-bg); }
 
-        /* ===== HERO ===== */
-        .hero-section { position: relative; background: linear-gradient(135deg, rgba(10, 46, 92, 0.336), rgba(26, 106, 176, 0.342)), url('images/back3.jpg'); background-size: cover; background-position: center 30%; min-height: 90vh; display: flex; align-items: center; color: white; }
-        .hero-title { font-size: 3.8rem; font-weight: 800; line-height: 1.2; text-shadow: 0 5px 20px rgba(0,0,0,0.3); letter-spacing: -0.02em; }
+        /* ===== HERO SLIDER ===== */
+        .hero-slider {
+            position: relative;
+            min-height: 90vh;
+            overflow: hidden;
+        }
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center 30%;
+            display: flex;
+            align-items: center;
+        }
+        .hero-slide.active {
+            opacity: 1;
+        }
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 46, 92, 0.75), rgba(26, 106, 176, 0.6));
+            z-index: 1;
+        }
+        .hero-slide .container {
+            position: relative;
+            z-index: 2;
+        }
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            letter-spacing: -0.02em;
+        }
         .hero-title .highlight { color: var(--accent-yellow); }
-        .hero-subtext { background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(4px); padding: 1.2rem; border-radius: 24px; font-size: 1.05rem; border-left: 4px solid var(--accent-yellow); }
+        .hero-subtext {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            padding: 1.2rem;
+            border-radius: 24px;
+            font-size: 1.05rem;
+            border-left: 4px solid var(--accent-yellow);
+        }
         .badge-logo { max-width: 90px; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2)); }
+
+        /* Slider Dots */
+        .slider-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 12px;
+        }
+        .slider-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        .slider-dot.active {
+            background: var(--accent-yellow);
+            border-color: white;
+            transform: scale(1.2);
+        }
+        .slider-dot:hover {
+            background: var(--accent-yellow);
+        }
+
+        /* Slider Arrows */
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(4px);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slider-arrow:hover {
+            background: var(--accent-yellow);
+            border-color: var(--accent-yellow);
+            color: var(--primary-dark);
+        }
+        .slider-arrow.prev { left: 20px; }
+        .slider-arrow.next { right: 20px; }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.3rem; }
+            .slider-arrow {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+            .slider-arrow.prev { left: 10px; }
+            .slider-arrow.next { right: 10px; }
+        }
 
         /* ===== MISSION CARDS ===== */
         .mission-card { background: #ffffff; border-radius: 28px; padding: 1.8rem 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 28px var(--shadow-color); transition: all 0.3s ease; border: 1px solid rgba(26, 107, 176, 0.08); }
@@ -88,6 +202,9 @@
         .activity-body { padding: 1.6rem; }
         .activity-body h3 { font-size: 1.6rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 0.5rem; }
         .year-badge { font-size: 0.8rem; background: var(--light-bg); color: var(--primary-blue); display: inline-block; padding: 0.2rem 1rem; border-radius: 40px; font-weight: 600; margin-bottom: 1rem; }
+        .activity-icon { font-size: 2rem; color: var(--accent-yellow); margin-bottom: 0.5rem; }
+        .activity-badge { font-size: 0.75rem; background: var(--light-bg); color: var(--primary-blue); display: inline-block; padding: 0.2rem 1rem; border-radius: 40px; font-weight: 600; margin-bottom: 0.8rem; letter-spacing: 0.5px; }
+        .activity-title { font-size: 1.5rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 0.5rem; }
 
         /* ===== PARTNER STRIP ===== */
         .partner-strip { background: white; padding: 1rem 0; border-radius: 80px; margin: 2rem 0; box-shadow: 0 4px 15px var(--shadow-color); }
@@ -142,27 +259,123 @@
         </div>
     </nav>
 
-    <!-- ===== HERO SECTION ===== -->
-    <section class="hero-section" id="home">
-        <div class="container py-5">
-            <div class="row align-items-center">
-                <div class="col-lg-7 text-white">
-                    <span class="badge bg-warning text-dark px-3 py-2 rounded-pill"><i class="bi bi-star-fill me-1"></i> Quality Education Since 2008</span>
-                    <h1 class="hero-title mt-3">A BETTER<br>FOUNDATION<br><span class="highlight">FOR A BRIGHTER FUTURE</span></h1>
-                    <div class="hero-subtext mt-4">
-                        <i class="bi bi-geo-alt-fill text-warning me-2"></i> Iganga, Uganda — 1.5km off Iganga-Jinja Highway<br>
-                        A premier boarding and day primary school nurturing young minds with excellence and care.
+    <!-- ===== HERO SLIDER ===== -->
+    <section class="hero-slider" id="home">
+        <!-- Slide 1 -->
+        <div class="hero-slide active" style="background-image: url('images/back3.jpg');">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 text-white">
+                        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill"><i class="bi bi-star-fill me-1"></i> Quality Education Since 2008</span>
+                        <h1 class="hero-title mt-3">A BETTER<br>FOUNDATION<br><span class="highlight">FOR A BRIGHTER FUTURE</span></h1>
+                        <div class="hero-subtext mt-4">
+                            <i class="bi bi-geo-alt-fill text-warning me-2"></i> Iganga, Uganda — 1.5km off Iganga-Jinja Highway<br>
+                            A premier boarding and day primary school nurturing young minds with excellence and care.
+                        </div>
+                        <div class="mt-4 d-flex flex-wrap gap-3">
+                            <a href="about.html" class="btn btn-primary-custom rounded-pill px-4 py-2">Discover More</a>
+                            <a href="contact.html" class="btn btn-outline-light rounded-pill px-4 py-2">Visit Campus</a>
+                        </div>
                     </div>
-                    <div class="mt-4 d-flex flex-wrap gap-3">
-                        <a href="about.html" class="btn btn-primary-custom rounded-pill px-4 py-2">Discover More</a>
-                        <a href="contact.html" class="btn btn-outline-light rounded-pill px-4 py-2">Visit Campus</a>
+                    <div class="col-lg-5 d-none d-lg-block text-end">
+                        <img src="images/badge.jpg" alt="Buliigo Crest" style="max-width: 180px; opacity: 0.85;">
                     </div>
-                </div>
-                <div class="col-lg-5 d-none d-lg-block text-end">
-                    <img src="images/badge.jpg" alt="Buliigo Crest" style="max-width: 180px; opacity: 0.85;">
                 </div>
             </div>
         </div>
+
+        <!-- Slide 2 -->
+        <div class="hero-slide" style="background-image: url('images/BUS.jpeg');">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8 text-white">
+                        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill"><i class="bi bi-book-fill me-1"></i> Academic Excellence</span>
+                        <h1 class="hero-title mt-3">EXCELLENCE IN<br><span class="highlight">EDUCATION & CHARACTER</span></h1>
+                        <div class="hero-subtext mt-4">
+                            <i class="bi bi-trophy-fill text-warning me-2"></i> Holistic education that nurtures the whole child — academically, spiritually, and socially.
+                        </div>
+                        <div class="mt-4 d-flex flex-wrap gap-3">
+                            <a href="about.html" class="btn btn-primary-custom rounded-pill px-4 py-2">Learn More</a>
+                            <a href="contact.html" class="btn btn-outline-light rounded-pill px-4 py-2">Visit Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="hero-slide" style="background-image: url('images/1 (2).jpeg');">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8 text-white">
+                        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill"><i class="bi bi-dribbble me-1"></i> Sports & Wellness</span>
+                        <h1 class="hero-title mt-3">BUILDING<br><span class="highlight">HEALTHY BODIES & MINDS</span></h1>
+                        <div class="hero-subtext mt-4">
+                            <i class="bi bi-heart-pulse-fill text-warning me-2"></i> Our PE program builds fitness, teamwork, and resilience through diverse sports and physical activities.
+                        </div>
+                        <div class="mt-4 d-flex flex-wrap gap-3">
+                            <a href="activities.html" class="btn btn-primary-custom rounded-pill px-4 py-2">View Activities</a>
+                            <a href="contact.html" class="btn btn-outline-light rounded-pill px-4 py-2">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="hero-slide" style="background-image: url('images/1 (1).jpeg');">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8 text-white">
+                        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill"><i class="bi bi-trophy-fill me-1"></i> Football Academy</span>
+                        <h1 class="hero-title mt-3">SKILL &<br><span class="highlight">SPORTSMANSHIP</span></h1>
+                        <div class="hero-subtext mt-4">
+                            <i class="bi bi-people-fill text-warning me-2"></i> Professional coaching, monthly friendly matches, and an annual football gala.
+                        </div>
+                        <div class="mt-4 d-flex flex-wrap gap-3">
+                            <a href="activities.html" class="btn btn-primary-custom rounded-pill px-4 py-2">Join the Team</a>
+                            <a href="contact.html" class="btn btn-outline-light rounded-pill px-4 py-2">Visit Campus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="hero-slide" style="background-image: url('images/staff.jpeg');">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8 text-white">
+                        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill"><i class="bi bi-star-fill me-1"></i> Girls Empowerment</span>
+                        <h1 class="hero-title mt-3">EMPOWERMENT<br><span class="highlight">THROUGH SPORT</span></h1>
+                        <div class="hero-subtext mt-4">
+                            <i class="bi bi-gender-female text-warning me-2"></i> Our girls football team promotes gender equality, teamwork, and athletic excellence.
+                        </div>
+                        <div class="mt-4 d-flex flex-wrap gap-3">
+                            <a href="activities.html" class="btn btn-primary-custom rounded-pill px-4 py-2">Learn More</a>
+                            <a href="contact.html" class="btn btn-outline-light rounded-pill px-4 py-2">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Dots -->
+        <div class="slider-dots" id="sliderDots">
+            <span class="slider-dot active" data-index="0"></span>
+            <span class="slider-dot" data-index="1"></span>
+            <span class="slider-dot" data-index="2"></span>
+            <span class="slider-dot" data-index="3"></span>
+            <span class="slider-dot" data-index="4"></span>
+        </div>
+
+        <!-- Slider Arrows -->
+        <button class="slider-arrow prev" id="prevSlide" aria-label="Previous slide">
+            <i class="bi bi-chevron-left"></i>
+        </button>
+        <button class="slider-arrow next" id="nextSlide" aria-label="Next slide">
+            <i class="bi bi-chevron-right"></i>
+        </button>
     </section>
 
     <!-- ===== STATS SECTION ===== -->
@@ -206,7 +419,7 @@
         </div>
         <div class="row g-5 align-items-center">
             <div class="col-md-5 fade-up">
-                <img src="images/kids.jpg" alt="Students learning at Buliigo Primary School" class="img-fluid rounded-4 shadow-lg" style="width: 100%; object-fit: cover; height: 380px;" onerror="this.src='https://placehold.co/600x400/1a6bb0/white?text=Buliigo+Students'">
+                <img src="images/BUS.jpeg" alt="Students learning at Buliigo Primary School" class="img-fluid rounded-4 shadow-lg" style="width: 100%; object-fit: cover; height: 380px;" onerror="this.src='https://placehold.co/600x400/1a6bb0/white?text=Buliigo+Students'">
             </div>
             <div class="col-md-7">
                 <div class="mission-card fade-up">
@@ -249,7 +462,7 @@
                         Our dedicated team of teachers works tirelessly to ensure every child reaches their full potential. We believe in a balanced education that combines academic rigor with character development, sports, and creative arts. Our boarding facilities provide a safe, caring, and home-like environment for our learners.<br><br>
                         We invite you to partner with us in this noble task of raising responsible and successful citizens. Together, we can build a brighter future for our children.<br><br>
                         With pride and commitment,</p>
-                        <div class="signature">Mr. John Mukasa, <br>Head Teacher - Buliigo Primary School</div>
+                        <div class="signature"><br>Head Teacher - Buliigo Primary School</div>
                     </div>
                 </div>
             </div>
@@ -310,33 +523,51 @@
             <p class="text-muted mt-3">Beyond academics — empowering students through co-curricular excellence, leadership, and creative arts.</p>
         </div>
         <div class="row g-4">
-            <div class="col-md-4 fade-up">
+           <div class="col-md-4 fade-up">
                 <div class="activity-card">
-                    <img src="images/scat.jpg" class="activity-img" alt="Scouting" onerror="this.src='https://placehold.co/600x400/1a6bb0/white?text=Scouting'">
+                    <img src="images/sport2.jpeg" class="activity-img" alt="Football Training" onerror="this.src='https://placehold.co/600x400/1a6bb0/white?text=Football+Training'">
                     <div class="activity-body">
-                        <div class="year-badge">SCOUTING</div>
-                        <h3>Leadership & Service</h3>
-                        <p>Scouting at Buliigo builds resilience, teamwork, and community service through outdoor adventures and moral development programs.</p>
+                        <div class="activity-icon"><i class="bi bi-dribbble"></i></div>
+                        <div class="activity-badge">FOOTBALL ACADEMY</div>
+                        <h3 class="activity-title">Skill & Sportsmanship</h3>
+                        <p>Our football program focuses on technical skills, tactical awareness, and physical fitness. Students compete in district and regional championships while building character and discipline.</p>
+                        <ul class="mt-2 small text-muted">
+                            <li>✓ Professional coaching</li>
+                            <li>✓ Monthly friendly matches</li>
+                            <li>✓ Annual football gala</li>
+                        </ul>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 fade-up">
                 <div class="activity-card">
-                    <img src="images/leader.jpg" class="activity-img" alt="Leadership" onerror="this.src='https://placehold.co/600x400/1a6bb0/white?text=Leadership'">
+                    <img src="images/PE.jpg" class="activity-img" alt="Physical Education" onerror="this.src='https://placehold.co/600x400/1a6bb0/white?text=PE'">
                     <div class="activity-body">
-                        <div class="year-badge">STUDENT LEADERSHIP</div>
-                        <h3>Prefectorial Board</h3>
-                        <p>Our prefects embody responsibility and integrity, mentoring peers and shaping positive school culture.</p>
+                        <div class="activity-icon"><i class="bi bi-heart-pulse-fill"></i></div>
+                        <div class="activity-badge">PHYSICAL EDUCATION</div>
+                        <h3 class="activity-title">PE & Sports</h3>
+                        <p>Our PE program builds fitness, teamwork, and resilience through diverse sports and physical activities.</p>
+                        <ul class="mt-2 small text-muted">
+                            <li>✓ Team sports & athletics</li>
+                            <li>✓ Fitness & wellness training</li>
+                            <li>✓ Inter-house competitions</li>
+                        </ul>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 fade-up">
                 <div class="activity-card">
-                    <img src="images/dance.jpg" class="activity-img" alt="Performing Arts" onerror="this.src='https://placehold.co/600x400/1a6bb0/white?text=Performing+Arts'">
+                    <img src="images/team.jpeg" class="activity-img" alt="Girls Football Team" onerror="this.src='https://placehold.co/600x400/1a6bb0/white?text=Girls+Football+Team'">
                     <div class="activity-body">
-                        <div class="year-badge">PERFORMING ARTS</div>
-                        <h3>Music, Dance & Drama</h3>
-                        <p>Music, dance, and drama are integral to our vibrant culture. Students showcase talent at school and national events.</p>
+                        <div class="activity-icon"><i class="bi bi-trophy-fill"></i></div>
+                        <div class="activity-badge">GIRLS FOOTBALL TEAM</div>
+                        <h3 class="activity-title">Empowerment Through Sport</h3>
+                        <p>Our girls football team promotes gender equality, teamwork, and athletic excellence. Young female athletes develop confidence, leadership, and life skills through competitive football.</p>
+                        <ul class="mt-2 small text-muted">
+                            <li>✓ Weekly training sessions</li>
+                            <li>✓ Inter-school tournaments</li>
+                            <li>✓ Talent development & mentorship</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -399,6 +630,7 @@
     <!-- ===== SCRIPTS ===== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Fade-up animation
         const fadeElements = document.querySelectorAll('.fade-up');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -410,6 +642,7 @@
         }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
         fadeElements.forEach(el => observer.observe(el));
 
+        // Image fallback
         document.querySelectorAll('img').forEach(img => {
             img.addEventListener('error', function() {
                 if (!this.dataset.fallback) {
@@ -418,6 +651,89 @@
                 }
             });
         });
+
+        // ===== HERO SLIDER =====
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        const prevBtn = document.getElementById('prevSlide');
+        const nextBtn = document.getElementById('nextSlide');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function goToSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            const next = (currentSlide + 1) % slides.length;
+            goToSlide(next);
+        }
+
+        function prevSlide() {
+            const prev = (currentSlide - 1 + slides.length) % slides.length;
+            goToSlide(prev);
+        }
+
+        function startSlider() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function stopSlider() {
+            clearInterval(slideInterval);
+        }
+
+        // Dot clicks
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                stopSlider();
+                goToSlide(index);
+                startSlider();
+            });
+        });
+
+        // Arrow clicks
+        prevBtn.addEventListener('click', () => {
+            stopSlider();
+            prevSlide();
+            startSlider();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            stopSlider();
+            nextSlide();
+            startSlider();
+        });
+
+        // Pause on hover
+        const slider = document.querySelector('.hero-slider');
+        slider.addEventListener('mouseenter', stopSlider);
+        slider.addEventListener('mouseleave', startSlider);
+
+        // Touch support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        slider.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        slider.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                stopSlider();
+                if (diff > 0) nextSlide();
+                else prevSlide();
+                startSlider();
+            }
+        });
+
+        // Start the slider
+        startSlider();
     </script>
 </body>
 </html>
